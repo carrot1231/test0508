@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>ST1207专属随机点名器</title>
+	<style type="text/css">
+		span{font-size:42px;color:red}
+	</style>
+    <script type="text/javascript">
+		var isRun=true;
+		var a = ["李龙泰","袁保玖","刘彦","杨阳","刘丽丽","董忱忱","孙赵星","洪曦","黄忠帆","舒林","邓杰","肖龙云","刘璐","施进冶","羊恩教","凌胜","黄丽仪","范翠丽","左兆叶","史静静"];
+		var a2 = new Array();
+		function action(str){
+			var s = document.getElementById("bt").value;
+			if(s=="开始"){
+				isRun=true;
+				run();
+				document.getElementById("bt").value="结束";
+			}else{
+				isRun=false;
+				document.getElementById("bt").value="开始";
+			}
+		}
+		function run(){
+			var i = Math.floor(Math.random() * a.length+ 1)-1;
+			document.getElementById("show").innerHTML=a[i];
+			if(isRun==false){
+				var b =true;
+				for(var j in a2){
+					if(a2[j]==i){
+						b=false;
+					}
+				}
+				if(b){
+					a2[a2.length]=i;
+					return;
+				}
+			}
+			setTimeout("run()",10);
+		}
+	</script>
+ 
+</head>
+ 
+<body>
+	<h1 style="text-align:center; margin-top:80px;">北京软测&nbsp;&nbsp;<span>1207</span>&nbsp;&nbsp;班随机点名器</h1>
+
+    <div style="text-align:center; margin-top:80px;width:100%;">
+    	<p style="margin: auto; font-family: '黑体'; font-size: 55px; color:chocolate;">你，准备好了吗?</p>
+    	<p> </p>
+        <div id="show" style="margin: auto;text-align:center; line-height: 300px; 
+        	color: blue; font-family: '微软雅黑'; font-size:88px;width:500px;height:300px; background:#FFEEFF">
+        </div>
+        <div style="margin-top:20px;">
+            <input id="bt" type="button" onclick="action()" value="开始" />
+        </div>
+    </div>
+</body>
+</html>
+
